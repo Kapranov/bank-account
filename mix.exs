@@ -22,7 +22,7 @@ defmodule BankAccount.MixProject do
   def application do
     [
       extra_applications: applications(Mix.env),
-      mod: {BankAccount.Application, []}
+      mod: {Bank, []}
     ]
   end
 
