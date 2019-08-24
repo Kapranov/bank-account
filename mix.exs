@@ -7,6 +7,10 @@ defmodule BankAccount.MixProject do
       version: "0.1.0",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
+      elixirc_paths: elixirc_paths(Mix.env),
+      aliases: [
+        test: "test --no-start"
+      ],
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
         coveralls: :test,
@@ -39,6 +43,9 @@ defmodule BankAccount.MixProject do
       {:mox, "~> 0.5.1"}
     ]
   end
+
+  defp elixirc_paths(:test), do: ["test/support", "lib"]
+  defp elixirc_paths(_),     do: ["lib"]
 
   defp applications(:dev), do: applications(:all) ++ [:remix]
   defp applications(_all), do: [:logger]
